@@ -1,12 +1,26 @@
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
+import { Split } from 'lucide-react';
 
 const HomeLayout = () => {
   return (
     <div>
-      <header>Navigation Home</header>
+      <header className="py-6 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Split className="w-8 h-8 text-primary" />
+          <h1 className="text-2xl font-bold">SplitEasy</h1>
+        </div>
+        <Link to="/dashboard">
+          <button>Войти</button>
+        </Link>
+      </header>
       <main>
         <Outlet />
       </main>
+      <footer className="py-8 border-t mt-20">
+        <div className="text-center text-muted-foreground">
+          <p>© 2024 SplitEasy. Все права защищены.</p>
+        </div>
+      </footer>
     </div>
   );
 };
