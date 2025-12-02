@@ -54,7 +54,9 @@ const Login = () => {
                 </div>
                 <div className="w-1/2 bg-blue-400">
                     <form action={login}>
+                        <label htmlFor="email">Email</label>
                         <input type="text" name="email" />
+                        <label htmlFor="email">Password</label>
                         <input type="text" name="password" />
                         <button type="submit">LogIn</button>
                     </form>

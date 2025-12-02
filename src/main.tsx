@@ -7,23 +7,25 @@ import HomeLayout from './layouts/HomeLayout.tsx';
 import Home from './pages/Home.tsx';
 import Dashboard from './pages/Dashboard.tsx';
 import Login from './pages/Login.tsx';
+import Signup from './pages/Signup.tsx';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeLayout />}>
-            <Route index element={<Home />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
+    createRoot(rootElement).render(
+        <StrictMode>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomeLayout />}>
+                        <Route index element={<Home />} />
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
 
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </StrictMode>
-  );
+                    <Route path="/dashboard" element={<DashboardLayout />}>
+                        <Route index element={<Dashboard />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </StrictMode>
+    );
 }
