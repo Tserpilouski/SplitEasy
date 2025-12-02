@@ -6,6 +6,7 @@ import DashboardLayout from './layouts/DashboardLayout.tsx';
 import HomeLayout from './layouts/HomeLayout.tsx';
 import Home from './pages/Home.tsx';
 import Dashboard from './pages/Dashboard.tsx';
+import Login from './pages/Login.tsx';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
@@ -16,6 +17,7 @@ if (rootElement) {
           <Route path="/" element={<HomeLayout />}>
             <Route index element={<Home />} />
           </Route>
+          <Route path="/login" element={<Login />} />
 
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
