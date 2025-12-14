@@ -1,10 +1,13 @@
 import { Controller, useForm } from 'react-hook-form';
 import type { SignupForm } from '@/types/auth.types';
 import { signupDefaultValues, signupValidationRules } from '@/lib/validations/auth.validation';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Wallet } from 'lucide-react';
+import EnumMainRoutes from '@/enums/EnumMainRoutes';
 
 const Signup: React.FC = () => {
+    const mainRoutes = EnumMainRoutes;
+    const navigate = useNavigate();
     const { register, handleSubmit, formState, control } = useForm<SignupForm>({
         mode: 'onChange',
         defaultValues: signupDefaultValues,
@@ -14,6 +17,7 @@ const Signup: React.FC = () => {
 
     const onSubmit = (data: SignupForm) => {
         console.log(data);
+        navigate(mainRoutes.HOME.path);
     };
 
     return (
