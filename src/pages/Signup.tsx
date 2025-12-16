@@ -4,16 +4,35 @@ import { signupDefaultValues, signupValidationRules } from '@/lib/validations/au
 import { Link, useNavigate } from 'react-router';
 import { Wallet } from 'lucide-react';
 import EnumMainRoutes from '@/enums/EnumMainRoutes';
+import FormTextField from '@/components/ui/FormTextField';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { useState } from 'react';
+import { VALIDATION_MESSAGES } from '@/constants/validation.constants';
 
 const Signup: React.FC = () => {
     const mainRoutes = EnumMainRoutes;
     const navigate = useNavigate();
-    const { register, handleSubmit, formState, control } = useForm<SignupForm>({
+    const [step, setStep] = useState(1);
+    const { register, handleSubmit, formState, control, trigger, watch } = useForm<SignupForm>({
         mode: 'onChange',
         defaultValues: signupDefaultValues,
     });
 
     const { errors } = formState;
+    const password = watch('password');
+
+    const handleNextStep = async () => {
+        const fieldsToValidate = step === 1 ? ['name', 'email', 'agreeToTerms'] : [];
+        const isValid = await trigger(fieldsToValidate as Array<keyof SignupForm>);
+        if (isValid) {
+            setStep(2);
+        }
+    };
+
+    const handlePrevStep = () => {
+        setStep(1);
+    };
 
     const onSubmit = (data: SignupForm) => {
         console.log(data);
@@ -59,55 +78,121 @@ const Signup: React.FC = () => {
                 <div className="absolute top-1/2 right-12 w-32 h-32 bg-white/5 rounded-full" />
             </div>
             <div className="w-1/2 flex flex-col justify-center bg-white">
-                <div className="w-1/2">
-                    <form className="flex flex-col gap-4 m-auto bg-blue-400" onSubmit={handleSubmit(onSubmit)}>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            className="border"
-                            type="text"
-                            placeholder="Kiryl Tserpilouski"
-                            {...register('name', signupValidationRules.name)}
-                        />
-                        {errors.name?.message && <p className="text-red-800">{errors.name.message}</p>}
+                <div className="w-1/2 mx-auto">
+                    <div className="mb-6">
+                        <h2 className="text-2xl font-bold text-gray-800">
+                            {step === 1 ? 'Создать аккаунт' : 'Завершите регистрацию'}
+                        </h2>
+                        <p className="text-gray-600 mt-2">Шаг {step} из 2</p>
+                    </div>
 
-                        <label htmlFor="email">Email</label>
-                        <input
-                            className="border"
-                            type="email"
-                            placeholder="example@gmail.com"
-                            {...register('email', signupValidationRules.email)}
-                        />
-                        {errors.email?.message && <p className="text-red-800">{errors.email.message}</p>}
+                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+                        {step === 1 ? (
+                            <>
+                                <FormTextField
+                                    type="text"
+                                    label="Name"
+                                    placeholder="Kiryl Tserpilouski"
+                                    required
+                                    error={errors.name?.message}
+                                    register={register('name', signupValidationRules.name)}
+                                />
+                                <FormTextField
+                                    type="email"
+                                    label="Email"
+                                    placeholder="example@gmail.com"
+                                    required
+                                    error={errors.email?.message}
+                                    register={register('email', signupValidationRules.email)}
+                                />
+                                <Controller
+                                    name="agreeToTerms"
+                                    control={control}
+                                    rules={signupValidationRules.agreeToTerms}
+                                    render={({ field }) => (
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onChange={field.onChange}
+                                                    color="primary"
+                                                />
+                                            }
+                                            label={
+                                                <span>
+                                                    Я согласен с{' '}
+                                                    <Link to="/" className="text-indigo-600 hover:underline">
+                                                        условиями использования
+                                                    </Link>
+                                                    {' '}и{' '}
+                                                    <Link to="/" className="text-indigo-600 hover:underline">
+                                                        политикой конфиденциальности
+                                                    </Link>
+                                                </span>
+                                            }
+                                        />
+                                    )}
+                                />
+                                {errors.agreeToTerms?.message && (
+                                    <p className="text-red-600 text-sm">{errors.agreeToTerms.message}</p>
+                                )}
 
-                        <Controller
-                            name="agreeToTerms"
-                            control={control}
-                            rules={signupValidationRules.agreeToTerms}
-                            render={({ field }) => (
-                                <div className="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id="agreeToTerms"
-                                        checked={field.value}
-                                        onChange={field.onChange}
-                                    />
-                                    <label htmlFor="agreeToTerms">
-                                        Я согласен с
-                                        <Link to="/" className="text-indigo-600 hover:underline">
-                                            условиями использования
-                                        </Link>
-                                        <Link to="/" className="text-indigo-600 hover:underline">
-                                            политикой конфиденциальности
-                                        </Link>
-                                    </label>
+                                <button
+                                    type="button"
+                                    onClick={handleNextStep}
+                                    className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+                                >
+                                    Далее
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <FormTextField
+                                    type="password"
+                                    label="Password"
+                                    placeholder="Введите пароль"
+                                    required
+                                    error={errors.password?.message}
+                                    register={register('password', signupValidationRules.password)}
+                                />
+                                <FormTextField
+                                    type="password"
+                                    label="Confirm Password"
+                                    placeholder="Повторите пароль"
+                                    required
+                                    error={errors.confirmPassword?.message}
+                                    register={register('confirmPassword', {
+                                        required: VALIDATION_MESSAGES.REQUIRED_FIELD,
+                                        validate: (value) =>
+                                            value === password || VALIDATION_MESSAGES.PASSWORDS_DO_NOT_MATCH,
+                                    })}
+                                />
+                                <FormTextField
+                                    type="tel"
+                                    label="Phone"
+                                    placeholder="+375 29 123 45 67"
+                                    required
+                                    error={errors.phone?.message}
+                                    register={register('phone', signupValidationRules.phone)}
+                                />
+
+                                <div className="flex gap-3">
+                                    <button
+                                        type="button"
+                                        onClick={handlePrevStep}
+                                        className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                                    >
+                                        Назад
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+                                    >
+                                        Зарегистрироваться
+                                    </button>
                                 </div>
-                            )}
-                        />
-                        {errors.agreeToTerms?.message && <p className="text-red-800">{errors.agreeToTerms.message}</p>}
-
-                        <button className="bg-purple-400" type="submit">
-                            Submit
-                        </button>
+                            </>
+                        )}
                     </form>
                 </div>
             </div>

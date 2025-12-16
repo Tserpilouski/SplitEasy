@@ -5,6 +5,7 @@ import { LoginValidationRules } from '@/lib/validations/auth.validation';
 import { type LoginForm } from '@/types/auth.types';
 import { loginDefaultValues } from '@/lib/validations/auth.validation';
 import { useEffect } from 'react';
+import FormTextField from '@/components/ui/FormTextField';
 
 const Login: React.FC = () => {
     const {
@@ -65,33 +66,26 @@ const Login: React.FC = () => {
                     <p className="text-muted-foreground mt-2">Введите свои данные для входа</p>
                 </div>
                 <div className="w-1/2 mx-auto shadow-lg p-10 rounded-xl">
-                    <form className="space-y-5" onSubmit={handleSubmit(login)}>
-                        <div className="flex flex-col">
-                            <label htmlFor="email" className="block mb-2.5 text-sm font-medium text-heading">
-                                Email
-                            </label>
-                            <input
-                                className="border border-gray-400 rounded-sm "
-                                type="text"
-                                placeholder="example@gmail.com"
-                                {...register('email', LoginValidationRules.email)}
-                            />
-                            {errors.email && <p>{errors.email.message}</p>}
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                className="border border-gray-400 rounded-sm "
-                                type="password"
-                                placeholder="****"
-                                {...register('password', LoginValidationRules.password)}
-                            />
-                        </div>
-                        <div className="flex items-center justify-end">
-                            <Link to="/forgot-password" className="text-sm text-primary hover:underline">
-                                Forgot password?
-                            </Link>
-                        </div>
+                    <form className="flex flex-col space-y-5" onSubmit={handleSubmit(login)}>
+                        <FormTextField
+                            type="email"
+                            label="Email"
+                            placeholder="example@gmail.com"
+                            required
+                            error={errors.email?.message}
+                            register={register('email', LoginValidationRules.email)}
+                        />
+                        <FormTextField
+                            type="password"
+                            label="Password"
+                            placeholder="****"
+                            required
+                            error={errors.password?.message}
+                            register={register('password', LoginValidationRules.password)}
+                        />
+                        <Link to="/forgot-password" className="text-sm text-primary hover:underline">
+                            Forgot password?
+                        </Link>
                         <button
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
                             type="submit"
@@ -103,12 +97,12 @@ const Login: React.FC = () => {
                         </button>
                     </form>
                 </div>
-                <p className="text-center mt-6 text-muted-foreground">
-                    Нет аккаунта?
-                    <Link to="/signup" className="text-primary font-medium hover:underline" data-testid="link-signup">
+                <div className="text-center mt-6 text-muted-foreground">
+                    <span className="mr-1">Нет аккаунта?</span>
+                    <Link to="/signup" className="text-primary font-medium hover:underline">
                         Зарегистрироваться
                     </Link>
-                </p>
+                </div>
             </div>
         </div>
     );

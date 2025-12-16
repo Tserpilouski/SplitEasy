@@ -16,6 +16,20 @@ export const signupValidationRules = {
             message: VALIDATION_MESSAGES.INVALID_EMAIL,
         },
     },
+    password: {
+        required: VALIDATION_MESSAGES.REQUIRED_FIELD,
+        minLength: {
+            value: VALIDATION_CONSTRAINTS.PASSWORD_MIN_LENGTH,
+            message: VALIDATION_MESSAGES.PASSWORD_TOO_SHORT,
+        },
+    },
+    phone: {
+        required: VALIDATION_MESSAGES.REQUIRED_FIELD,
+        pattern: {
+            value: VALIDATION_PATTERNS.PHONE,
+            message: VALIDATION_MESSAGES.INVALID_PHONE,
+        },
+    },
     agreeToTerms: {
         required: VALIDATION_MESSAGES.AGREE_TO_TERMS,
     },
