@@ -34,24 +34,24 @@ const Login: React.FC = () => {
                             <span className="text-3xl font-bold">SplitEasy</span>
                         </div>
 
-                        <h1 className="text-4xl font-bold mb-6">Делите расходы просто</h1>
+                        <h1 className="text-4xl font-bold mb-6">Split expenses easily</h1>
                         <p className="text-lg text-indigo-100 leading-relaxed">
-                            Забудьте о сложных расчётах. Отслеживайте траты, делите счета и знайте, кто кому должен —
-                            всё в одном месте.
+                            Forget about complex calculations. Track expenses, split bills and know who owes whom —
+                            all in one place.
                         </p>
 
                         <div className="mt-12 grid grid-cols-3 gap-6">
                             <div className="text-center">
                                 <div className="text-3xl font-bold">10K+</div>
-                                <div className="text-sm text-indigo-200">Пользователей</div>
+                                <div className="text-sm text-indigo-200">Users</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl font-bold">50K+</div>
-                                <div className="text-sm text-indigo-200">Событий</div>
+                                <div className="text-sm text-indigo-200">Events</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl font-bold">1M+</div>
-                                <div className="text-sm text-indigo-200">Расходов</div>
+                                <div className="text-sm text-indigo-200">Expenses</div>
                             </div>
                         </div>
                     </div>
@@ -62,8 +62,8 @@ const Login: React.FC = () => {
             </div>
             <div className="w-1/2 flex flex-col justify-center bg-white">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-foreground">Вход в аккаунт</h2>
-                    <p className="text-muted-foreground mt-2">Введите свои данные для входа</p>
+                    <h2 className="text-3xl font-bold text-foreground">Login to account</h2>
+                    <p className="text-muted-foreground mt-2">Enter your credentials to login</p>
                 </div>
                 <div className="w-1/2 mx-auto shadow-lg p-10 rounded-xl">
                     <form className="flex flex-col space-y-5" onSubmit={handleSubmit(login)}>
@@ -98,9 +98,9 @@ const Login: React.FC = () => {
                     </form>
                 </div>
                 <div className="text-center mt-6 text-muted-foreground">
-                    <span className="mr-1">Нет аккаунта?</span>
+                    <span className="mr-1">Don&apos;t have an account?</span>
                     <Link to="/signup" className="text-primary font-medium hover:underline">
-                        Зарегистрироваться
+                        Sign Up
                     </Link>
                 </div>
             </div>

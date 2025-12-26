@@ -12,7 +12,7 @@ const HomeLayout = () => {
                     <h1 className="text-2xl font-bold">SplitEasy</h1>
                 </div>
                 <Link to={mainRoutes.LOGIN.path}>
-                    <button>Войти</button>
+                    <button>Login</button>
                 </Link>
             </header>
             <main>
@@ -20,7 +20,7 @@ const HomeLayout = () => {
             </main>
             <footer className="py-8 border-t mt-20">
                 <div className="text-center text-muted-foreground">
-                    <p>© 2024 SplitEasy. Все права защищены.</p>
+                    <p>© 2024 SplitEasy. All rights reserved.</p>
                 </div>
             </footer>
         </>

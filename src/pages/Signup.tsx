@@ -51,24 +51,24 @@ const Signup: React.FC = () => {
                             <span className="text-3xl font-bold">SplitEasy</span>
                         </div>
 
-                        <h1 className="text-4xl font-bold mb-6">Делите расходы просто</h1>
+                        <h1 className="text-4xl font-bold mb-6">Split expenses easily</h1>
                         <p className="text-lg text-indigo-100 leading-relaxed">
-                            Забудьте о сложных расчётах. Отслеживайте траты, делите счета и знайте, кто кому должен —
-                            всё в одном месте.
+                            Forget about complex calculations. Track expenses, split bills and know who owes whom —
+                            all in one place.
                         </p>
 
                         <div className="mt-12 grid grid-cols-3 gap-6">
                             <div className="text-center">
                                 <div className="text-3xl font-bold">10K+</div>
-                                <div className="text-sm text-indigo-200">Пользователей</div>
+                                <div className="text-sm text-indigo-200">Users</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl font-bold">50K+</div>
-                                <div className="text-sm text-indigo-200">Событий</div>
+                                <div className="text-sm text-indigo-200">Events</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl font-bold">1M+</div>
-                                <div className="text-sm text-indigo-200">Расходов</div>
+                                <div className="text-sm text-indigo-200">Expenses</div>
                             </div>
                         </div>
                     </div>
@@ -81,9 +81,9 @@ const Signup: React.FC = () => {
                 <div className="w-1/2 mx-auto">
                     <div className="mb-6">
                         <h2 className="text-2xl font-bold text-gray-800">
-                            {step === 1 ? 'Создать аккаунт' : 'Завершите регистрацию'}
+                            {step === 1 ? 'Create account' : 'Complete registration'}
                         </h2>
-                        <p className="text-gray-600 mt-2">Шаг {step} из 2</p>
+                        <p className="text-gray-600 mt-2">Step {step} of 2</p>
                     </div>
 
                     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -120,13 +120,13 @@ const Signup: React.FC = () => {
                                             }
                                             label={
                                                 <span>
-                                                    Я согласен с{' '}
+                                                    I agree to the{' '}
                                                     <Link to="/" className="text-indigo-600 hover:underline">
-                                                        условиями использования
-                                                    </Link>
-                                                    {' '}и{' '}
+                                                        terms of service
+                                                    </Link>{' '}
+                                                    and{' '}
                                                     <Link to="/" className="text-indigo-600 hover:underline">
-                                                        политикой конфиденциальности
+                                                        privacy policy
                                                     </Link>
                                                 </span>
                                             }
@@ -142,7 +142,7 @@ const Signup: React.FC = () => {
                                     onClick={handleNextStep}
                                     className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
                                 >
-                                    Далее
+                                    Next
                                 </button>
                             </>
                         ) : (
@@ -150,7 +150,7 @@ const Signup: React.FC = () => {
                                 <FormTextField
                                     type="password"
                                     label="Password"
-                                    placeholder="Введите пароль"
+                                    placeholder="Enter password"
                                     required
                                     error={errors.password?.message}
                                     register={register('password', signupValidationRules.password)}
@@ -158,7 +158,7 @@ const Signup: React.FC = () => {
                                 <FormTextField
                                     type="password"
                                     label="Confirm Password"
-                                    placeholder="Повторите пароль"
+                                    placeholder="Confirm password"
                                     required
                                     error={errors.confirmPassword?.message}
                                     register={register('confirmPassword', {
@@ -182,13 +182,13 @@ const Signup: React.FC = () => {
                                         onClick={handlePrevStep}
                                         className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                                     >
-                                        Назад
+                                        Back
                                     </button>
                                     <button
                                         type="submit"
                                         className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
                                     >
-                                        Зарегистрироваться
+                                        Sign Up
                                     </button>
                                 </div>
                             </>

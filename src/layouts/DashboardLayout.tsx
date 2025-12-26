@@ -6,13 +6,13 @@ const DashboardLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
     return (
         <div className="flex min-h-screen">
-            {/* Sidebar - фиксированная ширина */}
+            {/* Sidebar - fixed width */}
             <Sidebar
                 isOpen={isSidebarOpen}
                 onClose={() => setIsSidebarOpen(false)}
             />
 
-            {/* Main content - сдвигается когда sidebar открыт */}
+            {/* Main content - shifts when sidebar is open */}
             <div
                 className={`flex-1 flex flex-col transition-all duration-300 ${
                     isSidebarOpen ? 'ml-64' : 'ml-0'
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
 
                 <footer className="py-8 border-t mt-20">
                     <div className="text-center text-muted-foreground">
-                        <p>© 2024 SplitEasy. Все права защищены.</p>
+                        <p>© 2024 SplitEasy. All rights reserved.</p>
                     </div>
                 </footer>
             </div>

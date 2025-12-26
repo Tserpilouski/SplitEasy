@@ -5,18 +5,18 @@ export default function Home() {
     const features = [
         {
             icon: Split,
-            title: 'Легкое деление расходов',
-            description: 'Делите счета поровну или настраивайте индивидуальные доли для каждого участника',
+            title: 'Easy expense splitting',
+            description: 'Split bills equally or customize individual shares for each participant',
         },
         {
             icon: Users,
-            title: 'Групповые поездки',
-            description: 'Идеально для путешествий, корпоративов и совместных покупок с друзьями',
+            title: 'Group trips',
+            description: 'Perfect for travels, corporate events and joint purchases with friends',
         },
         {
             icon: PieChart,
-            title: 'Прозрачная статистика',
-            description: 'Наглядные графики и автоматический расчет, кто кому и сколько должен',
+            title: 'Transparent statistics',
+            description: 'Clear graphs and automatic calculation of who owes whom and how much',
         },
     ];
 
@@ -26,21 +26,21 @@ export default function Home() {
                 <section className="py-20 md:py-32 text-center">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-5xl md:text-6xl font-bold mb-6 from-primary to-purple-600 bg-clip-text text-transparent">
-                            Делите расходы
-                            <br />с друзьями легко
+                            Split expenses
+                            <br />with friends easily
                         </h2>
                         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                            Забудьте о сложных расчетах в путешествиях и совместных покупках. SplitEasy автоматически
-                            считает, кто кому должен.
+                            Forget about complex calculations on trips and joint purchases. SplitEasy automatically
+                            calculates who owes whom.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to="/dashboard">
                                 <button className="text-lg px-8" data-testid="button-get-started">
-                                    Начать бесплатно
+                                    Start for free
                                 </button>
                             </Link>
                             <button className="text-lg px-8" data-testid="button-demo">
-                                Посмотреть демо
+                                Watch demo
                             </button>
                         </div>
                     </div>
@@ -66,13 +66,13 @@ export default function Home() {
 
                 <section className="py-16">
                     <div className="max-w-3xl mx-auto">
-                        <h3 className="text-3xl font-bold text-center mb-12">Как это работает</h3>
+                        <h3 className="text-3xl font-bold text-center mb-12">How it works</h3>
                         <div className="space-y-6">
                             {[
-                                'Создайте событие для вашей поездки или встречи',
-                                'Пригласите друзей по ссылке',
-                                'Добавляйте расходы по мере их появления',
-                                'Смотрите, кто кому должен в реальном времени',
+                                'Create an event for your trip or meeting',
+                                'Invite friends via link',
+                                'Add expenses as they occur',
+                                'See who owes whom in real time',
                             ].map((step, index) => (
                                 <div key={index} className="flex items-start gap-4" data-testid={`step-${index}`}>
                                     <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
@@ -87,13 +87,13 @@ export default function Home() {
 
                 <section className="py-20 text-center">
                     <div className="max-w-3xl mx-auto p-12 from-primary/10 to-purple-500/10 rounded-2xl">
-                        <h3 className="text-3xl font-bold mb-4">Готовы начать?</h3>
+                        <h3 className="text-3xl font-bold mb-4">Ready to start?</h3>
                         <p className="text-xl text-muted-foreground mb-8">
-                            Присоединяйтесь к тысячам пользователей, которые уже упростили деление расходов
+                            Join thousands of users who have already simplified expense splitting
                         </p>
                         <Link to="/dashboard">
                             <button className="text-lg px-8" data-testid="button-cta">
-                                Создать первое событие
+                                Create first event
                             </button>
                         </Link>
                     </div>
