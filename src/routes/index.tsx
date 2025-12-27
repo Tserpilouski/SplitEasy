@@ -5,6 +5,7 @@ import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
 import DashboardLayout from '@/layouts/DashboardLayout';
 import Dashboard from '@/pages/Dashboard';
+import NotFound from '@/pages/NotFound';
 import EnumMainRoutes from '@/enums/EnumMainRoutes';
 import EnumDashboardRoutes from '@/enums/EnumDashboardRoutes';
 
@@ -25,6 +26,7 @@ export function AppRoutes() {
                 <Route path={dashboardRoutes.getFullPath(dashboardRoutes.STATISTICS)} element={<div>Statistics</div>} />
                 <Route path={dashboardRoutes.getFullPath(dashboardRoutes.SETTINGS)} element={<div>Settings</div>} />
             </Route>
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
