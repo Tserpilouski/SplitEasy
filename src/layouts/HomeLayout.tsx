@@ -6,7 +6,7 @@ const HomeLayout = () => {
     const mainRoutes = EnumMainRoutes;
     return (
         <>
-            <header className="py-6 flex items-center justify-between">
+            <header className="container mx-auto py-6 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Split className="w-8 h-8 text-primary" />
                     <h1 className="text-2xl font-bold">SplitEasy</h1>

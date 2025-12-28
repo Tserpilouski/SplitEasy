@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormTextField from './ui/FormTextField';
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import type { EventForm } from '@/types/event.types';
 import { eventDefaultValues, EventValidationRules } from '@/lib/validations/event.validation';
 import { useEffect } from 'react';
@@ -21,6 +21,7 @@ const SDialog: React.FC<Props> = ({ isOpen, onClose }) => {
         register,
         handleSubmit,
         setFocus,
+        control,
         formState: { errors },
     } = useForm<EventForm>({ defaultValues: eventDefaultValues });
     const currency = cc.codes();
@@ -58,11 +59,19 @@ const SDialog: React.FC<Props> = ({ isOpen, onClose }) => {
                             rows={4}
                             register={register('description')}
                         />
-                        <Autocomplete
-                            disablePortal
-                            options={currency}
-                            sx={{ width: 300 }}
-                            renderInput={(params) => <TextField {...params} type="text" label="Currency" />}
+                        <Controller
+                            name="currency"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <Autocomplete
+                                    disablePortal
+                                    options={currency}
+                                    sx={{ width: 300 }}
+                                    value={value || null}
+                                    onChange={(_, newValue) => onChange(newValue)}
+                                    renderInput={(params) => <TextField {...params} type="text" label="Currency" />}
+                                />
+                            )}
                         />
                         <div>
                             <button onClick={onClose}>Cancel</button>
