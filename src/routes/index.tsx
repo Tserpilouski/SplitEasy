@@ -8,6 +8,7 @@ import Dashboard from '@/pages/Dashboard';
 import NotFound from '@/pages/NotFound';
 import EnumMainRoutes from '@/enums/EnumMainRoutes';
 import EnumDashboardRoutes from '@/enums/EnumDashboardRoutes';
+import Friends from '@/pages/Friends';
 
 export function AppRoutes() {
     const mainRoutes = EnumMainRoutes;
@@ -22,7 +23,7 @@ export function AppRoutes() {
             <Route path={mainRoutes.SIGNUP.path} element={<Signup />} />
             <Route path={mainRoutes.DASHBOARD.path} element={<DashboardLayout />}>
                 <Route index element={<Dashboard />} />
-                <Route path={dashboardRoutes.getFullPath(dashboardRoutes.FRIENDS)} element={<div>Friends</div>} />
+                <Route path={dashboardRoutes.getFullPath(dashboardRoutes.FRIENDS)} element={<Friends />} />
                 <Route path={dashboardRoutes.getFullPath(dashboardRoutes.STATISTICS)} element={<div>Statistics</div>} />
                 <Route path={dashboardRoutes.getFullPath(dashboardRoutes.SETTINGS)} element={<div>Settings</div>} />
             </Route>
