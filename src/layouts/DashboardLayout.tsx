@@ -1,29 +1,26 @@
 import { Outlet } from 'react-router';
 import Sidebar from '@/components/Sidebar';
 import { useState } from 'react';
+import { PanelLeftIcon } from 'lucide-react';
 
 const DashboardLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
     return (
         <div className="flex min-h-screen">
             {/* Sidebar - fixed width */}
-            <Sidebar
-                isOpen={isSidebarOpen}
-                onClose={() => setIsSidebarOpen(false)}
-            />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
             {/* Main content - shifts when sidebar is open */}
-            <div
-                className={`flex-1 flex flex-col transition-all duration-300 ${
-                    isSidebarOpen ? 'ml-64' : 'ml-0'
-                }`}
-            >
-                <header className="p-4 border-b">
+            <div className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'ml-64' : 'ml-0'}`}>
+                <header className="p-4 border-b border-gray-200">
                     <button
-                        onClick={() => setIsSidebarOpen(true)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        onClick={(e) => {
+                            setIsSidebarOpen(!isSidebarOpen);
+                            e.currentTarget.blur();
+                        }}
+                        className="p-2 text-gray-500 rounded-4xl hover:bg-gray-100"
                     >
-                        Open menu
+                        <PanelLeftIcon />
                     </button>
                 </header>
 
