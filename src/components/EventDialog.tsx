@@ -2,7 +2,7 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormTextField from './ui/FormTextField';
+import FormTextField from './common/FormTextField';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import type { EventForm } from '@/types/event.types';
 import { eventDefaultValues, EventValidationRules } from '@/lib/validations/event.validation';

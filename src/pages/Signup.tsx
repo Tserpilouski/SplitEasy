@@ -4,7 +4,7 @@ import { signupDefaultValues, signupValidationRules } from '@/lib/validations/au
 import { Link, useNavigate } from 'react-router';
 import { Wallet } from 'lucide-react';
 import EnumMainRoutes from '@/enums/EnumMainRoutes';
-import FormTextField from '@/components/ui/FormTextField';
+import FormTextField from '@/components/common/FormTextField';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useState } from 'react';
@@ -53,8 +53,8 @@ const Signup: React.FC = () => {
 
                         <h1 className="text-4xl font-bold mb-6">Split expenses easily</h1>
                         <p className="text-lg text-indigo-100 leading-relaxed">
-                            Forget about complex calculations. Track expenses, split bills and know who owes whom —
-                            all in one place.
+                            Forget about complex calculations. Track expenses, split bills and know who owes whom — all
+                            in one place.
                         </p>
 
                         <div className="mt-12 grid grid-cols-3 gap-6">

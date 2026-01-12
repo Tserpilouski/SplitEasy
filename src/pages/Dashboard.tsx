@@ -68,7 +68,7 @@ const Dashboard = () => {
             </div>
             <div className="flex gap-4 mb-4">
                 {events.map((event, index) => (
-                    <div className="p-2 border-4 border-blue-600" key={index}>
+                    <div className="p-4 border-2 rounded-xl border-gray-200 shadow-xl" key={index}>
                         <h3>{event.title}</h3>
                         <p>{event.description}</p>
                         <span>{event.currency}</span>

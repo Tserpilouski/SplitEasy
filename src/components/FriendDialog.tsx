@@ -4,7 +4,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, type FC } from 'react';
 import Button from './ui/Button';
-import FormTextField from './ui/FormTextField';
+import FormTextField from './common/FormTextField';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { friendDefaultValues, FriendValidationRules } from '@/lib/validations/friend.validation';
 

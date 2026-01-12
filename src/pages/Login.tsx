@@ -5,7 +5,7 @@ import { LoginValidationRules } from '@/lib/validations/auth.validation';
 import { type LoginForm } from '@/types/auth.types';
 import { loginDefaultValues } from '@/lib/validations/auth.validation';
 import { useEffect } from 'react';
-import FormTextField from '@/components/ui/FormTextField';
+import FormTextField from '@/components/common/FormTextField';
 
 const Login: React.FC = () => {
     const {
@@ -36,8 +36,8 @@ const Login: React.FC = () => {
 
                         <h1 className="text-4xl font-bold mb-6">Split expenses easily</h1>
                         <p className="text-lg text-indigo-100 leading-relaxed">
-                            Forget about complex calculations. Track expenses, split bills and know who owes whom —
-                            all in one place.
+                            Forget about complex calculations. Track expenses, split bills and know who owes whom — all
+                            in one place.
                         </p>
 
                         <div className="mt-12 grid grid-cols-3 gap-6">
